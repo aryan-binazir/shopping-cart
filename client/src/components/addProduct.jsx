@@ -6,44 +6,44 @@ const AddProduct = ({ onAdd }) => {
     setIsFormShown(!isFormShown)
   }
 
-/* reference material */
-{/* handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-         */}
-           {/* <div>
-      <h2>Phonebook</h2>
-        <div>
-          <form onSubmit={addName}>
-         <input
-	          value={newName} // App controls behavior of input element
-	          onChange={handleNameChange}
-           />
-         <button type="submit">save</button>
-          </form>
-      <h2>Numbers</h2>
-      </div> */}
+  const [price, setPrice] = useState("");
+  const [title, setTitle] = useState("");
+  const [quantity, setQuantity] = useState("");
 
+  // const [quantity, setQuantity] = useState({quantity:"", price:"", title:""});
 
-
+  const resetInputs = () => {
+    setPrice("");
+    setTitle("");
+    setQuantity("");
+  };
+// to be continued... 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const newProduct = { price, title, quantity };
+  //   onSubmit(newProduct, resetInputs);
+  //   onClick({ title, price, quantity })
+  //   console.log('here')
+  // };
+  
 return (
   <>
     <div className={isFormShown ? "add-form visible" : "add-form"}>
       <p><a className="button add-product-button" onClick={handleToggle}>Add A Product</a></p>
             <h3>Add Product</h3>
-                 <form onSubmit={onAdd(event,  { name: "Amazon Kindle E-reader", price: "$79.99", quantity: 5 })}>
+                 <form action="" onSubmit={handleSubmit}>
             <div className="input-group">
              <label label="product-name">Product Name</label>
-              <input type="text" id="product-name" value=""/>
+              <input type="text" id="product-name" value={title} onChange={(e) => setTitle(e.target.value)}/>
            </div>
             <div className="input-group">
               <label label="product-price">Price</label>
-               <input type="text" id="product-price" value=""/>
+               <input type="text" id="product-price" value={price} onChange={(e) => setPrice(e.target.value)}/>
              </div>
 
            <div className="input-group">
               <label label="product-quantity">Quantity</label>
-              <input type="text" id="product-quantity" value=""/>
+              <input type="text" id="product-quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
             </div>
 
            <div className="actions form-actions">

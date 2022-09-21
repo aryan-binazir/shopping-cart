@@ -7,14 +7,15 @@ import AddProduct from "./components/AddProduct";
 
 const App = () => {
   const [dummyData, setDummyData] = useState([
-    { name: "Amazon Kindle E-reader", price: "$79.99", quantity: 5 },
-    { name: "Apple 10.5-Inch iPad Pro", price: "$649.99", quantity: 2 },
-    { name: "Yamaha Portable Keyboard", price: "$155.99", quantity: 0 }
+    { title: "Amazon Kindle E-reader", price: "$79.99", quantity: 5 },
+    { title: "Apple 10.5-Inch iPad Pro", price: "$649.99", quantity: 2 },
+    { title: "Yamaha Portable Keyboard", price: "$155.99", quantity: 0 }
   ]);
 
-  const handleAddProduct = (event, newProduct) => {
+  const handleAddProduct = (newProduct) => {
     // event.preventDefault();
     // setDummyData([dummyData.concat(newProduct)])
+    console.log(newProduct)
   }
 
   return (

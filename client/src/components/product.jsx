@@ -1,8 +1,8 @@
-const Product = ({name, price, quantity}) => {
+const Product = ({ title, price, quantity }) => {
   return (
     <div className="product">
       <div className="product-details">
-        <h3>{name}</h3>
+        <h3>{title}</h3>
         <p className="price">{price}</p>
         <p className="quantity">{quantity} left in stock</p>
         <div className="actions product-actions">
