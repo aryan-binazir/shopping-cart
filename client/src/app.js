@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Header from "./components/header";
-import Product from "./components/product";
+import Header from "./components/Header";
+import Product from "./components/Product";
+import AddProduct from "./components/AddProduct";
 
 //import data from "../mockData/comments";
 
@@ -10,6 +11,12 @@ const App = () => {
     { name: "Apple 10.5-Inch iPad Pro", price: "$649.99", quantity: 2 },
     { name: "Yamaha Portable Keyboard", price: "$155.99", quantity: 0 }
   ]);
+
+  const handleAddProduct = (event, newProduct) => {
+    // event.preventDefault();
+    // setDummyData([dummyData.concat(newProduct)])
+  }
+
   return (
     <div id="app">
         <Header/>
@@ -19,13 +26,14 @@ const App = () => {
         <ul>
         {dummyData.map(product => 
           <li>
-            <Product {...product}/>
+          <Product {...product}/>
           </li>
         )}
         </ul>
-    </div>
+        <AddProduct onAdd={handleAddProduct}/>
+      </div>
       </main>
-  </div>
+    </div>
   )
 }
 
