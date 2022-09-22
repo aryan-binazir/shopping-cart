@@ -1,8 +1,8 @@
-const Product = ({ title, price, quantity }) => {
+const Product = ({ title, price, quantity, _id, onDelete }) => {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    
+    onDelete(_id);
   }
 
   return (

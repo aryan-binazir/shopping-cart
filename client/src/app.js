@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import Product from "./components/Product";
 import AddProduct from "./components/AddProduct";
 import axios from "axios"; 
+import { getgroups } from "process";
+import { get } from "http";
 ;
 //import data from "../mockData/comments";
 
@@ -13,26 +15,52 @@ const App = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log('effect')
+   
     axios
-      .get('/api/products')
-      .then(response => {
-        if (response.body){
-          console.log('promise fulfilled')
-          setProducts(response.body)
-          console.log("data is", response.body)
-        }
-      })
-      console.log(products)
+        .get('/api/products')
+        .then(response => {
+          console.log("I'me here")
+          if (response.data){          
+            setProducts(response.data)
+            
+          }
+
+        })
   }, [])
 
+  const getProducts = () => {
+    axios
+    .get('/api/products')
+    .then(response => {
+      console.log("I'me here")
+      if (response.data){          
+        setProducts(response.data)
+        
+      }
+
+    })
+  }
+
+  const handleDelete = (id) => {
+    console.log("In delte", id)
+    axios
+      .delete(`api/products/${id}`)
+      .then(response => {
+        console.log(response);
+        getProducts();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      
+  }
 
   const handleAddProduct = (newProduct) => {
-    console.log(JSON.stringify(newProduct));
     axios
       .post('/api/products', newProduct)
       .then(response => {
           console.log(response);
+          getProducts();
         })
         .catch(error => {
           console.log(error);
@@ -56,10 +84,11 @@ const App = () => {
         <h2>Products</h2>
         <ul>
         {products.map(product => 
-          <li>
-          <Product {...product}/>
+          <li key={product._id}>
+          <Product {...product} onDelete={handleDelete}/>
           </li>
-        )}
+        )
+        }
         </ul>
         <AddProduct onAdd={handleAddProduct}/>
       </div>
@@ -69,11 +98,3 @@ const App = () => {
 }
 
 export default App;
-
-
-
-// [
-//   { title: "Amazon Kindle E-reader", price: "79.99", quantity: 5 },
-//   { title: "Apple 10.5-Inch iPad Pro", price: "649.99", quantity: 2 },
-//   { title: "Yamaha Portable Keyboard", price: "155.99", quantity: 0 }
-// ]
