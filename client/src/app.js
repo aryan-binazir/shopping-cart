@@ -2,21 +2,51 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Product from "./components/Product";
 import AddProduct from "./components/AddProduct";
-
+import axios from "axios"; 
+;
 //import data from "../mockData/comments";
 
+
+
+
 const App = () => {
-  const [dummyData, setDummyData] = useState([
-    { title: "Amazon Kindle E-reader", price: "$79.99", quantity: 5 },
-    { title: "Apple 10.5-Inch iPad Pro", price: "$649.99", quantity: 2 },
-    { title: "Yamaha Portable Keyboard", price: "$155.99", quantity: 0 }
-  ]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('/api/products')
+      .then(response => {
+        if (response.body){
+          console.log('promise fulfilled')
+          setProducts(response.body)
+          console.log("data is", response.body)
+        }
+      })
+      console.log(products)
+  }, [])
+
 
   const handleAddProduct = (newProduct) => {
-    // event.preventDefault();
-    // setDummyData([dummyData.concat(newProduct)])
-    console.log(newProduct)
+    console.log(JSON.stringify(newProduct));
+    axios
+      .post('/api/products', newProduct)
+      .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      
+    // setProducts([...products, newProduct])
   }
+
+  // router.post("/products", (req, res, next) => {
+  //   const { title, price, quantity } = req.body;
+  //   Product.create({ title, price, quantity })
+  //     .then((product) => res.json(product))
+  //     .catch((err) => next(err));
+  // });
 
   return (
     <div id="app">
@@ -25,7 +55,7 @@ const App = () => {
       <div className="product-listing">
         <h2>Products</h2>
         <ul>
-        {dummyData.map(product => 
+        {products.map(product => 
           <li>
           <Product {...product}/>
           </li>
@@ -40,3 +70,10 @@ const App = () => {
 
 export default App;
 
+
+
+// [
+//   { title: "Amazon Kindle E-reader", price: "79.99", quantity: 5 },
+//   { title: "Apple 10.5-Inch iPad Pro", price: "649.99", quantity: 2 },
+//   { title: "Yamaha Portable Keyboard", price: "155.99", quantity: 0 }
+// ]
