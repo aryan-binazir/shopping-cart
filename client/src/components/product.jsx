@@ -9,17 +9,7 @@ const [showEdit, setShowEdit] = useState(false);
     onDelete(_id);
   }
 
-  // const handleClickEdit = (e) => {
-  //   e.preventDefault();
-  //   onEdit(_id);
-  // }
-
-  // const toggleEdit = (e) => {
-  //   setShowEdit(!showEdit);
-  // }
-
-  const toggleEditVisibility = (e) => {
-    e.preventDefault();
+  const toggleEditVisibility = () => {
     setShowEdit(!showEdit);
   }
 
@@ -38,6 +28,8 @@ const [showEdit, setShowEdit] = useState(false);
           price={price}
           showEdit={showEdit}
           toggleVisibility={toggleEditVisibility}
+          onEdit={onEdit}
+          _id={_id}
           />
         </div>
         <a className="delete-button" onClick={handleDelete}><span>X</span></a>

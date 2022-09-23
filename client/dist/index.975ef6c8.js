@@ -27099,41 +27099,39 @@ const App = ()=>{
     const [products, setProducts] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         (0, _axiosDefault.default).get("/api/products").then((response)=>{
-            console.log("I'me here");
             if (response.data) setProducts(response.data);
         });
     }, []);
-    const getProducts = ()=>{
-        (0, _axiosDefault.default).get("/api/products").then((response)=>{
-            console.log("I'me here");
-            if (response.data) setProducts(response.data);
-        });
-    };
-    const handleDelete = (id)=>{
-        console.log("In delte", id);
-        (0, _axiosDefault.default).delete(`api/products/${id}`).then((response)=>{
-            console.log(response);
-            getProducts();
+    const handleDelete = (pId)=>{
+        (0, _axiosDefault.default).delete(`api/products/${pId}`).then((response)=>{
+            setProducts(products.filter((product)=>product._id != pId));
         }).catch((error)=>{
             console.log(error);
         });
     };
-    const handleEdit = (id)=>{
-    // console.log("In edit", id)
-    // axios
-    //   .put(`api/products/${id}`)
-    //   .then(response => {
-    //     console.log(response);
-    //     getProducts();
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   }); 
+    const handleEdit = (_id, editedProduct)=>{
+        console.log(_id, editedProduct);
+        (0, _axiosDefault.default).put(`api/products/${_id}`, editedProduct).then((response)=>{
+            console.log("response", response);
+            setProducts(getEditedList(_id, editedProduct));
+        }).catch((error)=>{
+            console.log(error);
+        });
     };
-    const handleAddProduct = (newProduct)=>{
+    const getEditedList = (_id, editedProduct)=>{
+        return products.map((product)=>{
+            if (product._id === _id) return {
+                ...product,
+                ...editedProduct
+            };
+            else return product;
+        });
+    };
+    const handleAddProduct = (newProduct, callback)=>{
         (0, _axiosDefault.default).post("/api/products", newProduct).then((response)=>{
-            console.log(response);
-            getProducts();
+            console.log(response.data);
+            setProducts(products.concat(response.data));
+            if (callback) callback();
         }).catch((error)=>{
             console.log(error);
         });
@@ -27150,7 +27148,7 @@ const App = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 90,
+                lineNumber: 83,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
@@ -27161,7 +27159,7 @@ const App = ()=>{
                             children: "Products"
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 93,
+                            lineNumber: 86,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -27172,41 +27170,41 @@ const App = ()=>{
                                         onEdit: handleEdit
                                     }, void 0, false, {
                                         fileName: "src/App.js",
-                                        lineNumber: 97,
+                                        lineNumber: 90,
                                         columnNumber: 11
                                     }, undefined)
                                 }, product._id, false, {
                                     fileName: "src/App.js",
-                                    lineNumber: 96,
+                                    lineNumber: 89,
                                     columnNumber: 11
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 94,
+                            lineNumber: 87,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addProductDefault.default), {
                             onAdd: handleAddProduct
                         }, void 0, false, {
                             fileName: "src/App.js",
-                            lineNumber: 105,
+                            lineNumber: 98,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/App.js",
-                    lineNumber: 92,
+                    lineNumber: 85,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/App.js",
-                lineNumber: 91,
+                lineNumber: 84,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/App.js",
-        lineNumber: 89,
+        lineNumber: 82,
         columnNumber: 5
     }, undefined);
 };
@@ -27467,15 +27465,7 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
         e.preventDefault();
         onDelete(_id);
     };
-    // const handleClickEdit = (e) => {
-    //   e.preventDefault();
-    //   onEdit(_id);
-    // }
-    // const toggleEdit = (e) => {
-    //   setShowEdit(!showEdit);
-    // }
-    const toggleEditVisibility = (e)=>{
-        e.preventDefault();
+    const toggleEditVisibility = ()=>{
         setShowEdit(!showEdit);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27487,7 +27477,7 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                     children: title
                 }, void 0, false, {
                     fileName: "src/components/Product.jsx",
-                    lineNumber: 29,
+                    lineNumber: 19,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27498,7 +27488,7 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Product.jsx",
-                    lineNumber: 30,
+                    lineNumber: 20,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27509,7 +27499,7 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Product.jsx",
-                    lineNumber: 31,
+                    lineNumber: 21,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27520,7 +27510,7 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                             children: "Add to Cart"
                         }, void 0, false, {
                             fileName: "src/components/Product.jsx",
-                            lineNumber: 33,
+                            lineNumber: 23,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27529,7 +27519,7 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                             children: "Edit"
                         }, void 0, false, {
                             fileName: "src/components/Product.jsx",
-                            lineNumber: 34,
+                            lineNumber: 24,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _editProductDefault.default), {
@@ -27537,16 +27527,18 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                             quantity: quantity,
                             price: price,
                             showEdit: showEdit,
-                            toggleVisibility: toggleEditVisibility
+                            toggleVisibility: toggleEditVisibility,
+                            onEdit: onEdit,
+                            _id: _id
                         }, void 0, false, {
                             fileName: "src/components/Product.jsx",
-                            lineNumber: 35,
+                            lineNumber: 25,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Product.jsx",
-                    lineNumber: 32,
+                    lineNumber: 22,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27556,23 +27548,23 @@ const Product = ({ title , price , quantity , _id , onDelete , onEdit  })=>{
                         children: "X"
                     }, void 0, false, {
                         fileName: "src/components/Product.jsx",
-                        lineNumber: 43,
+                        lineNumber: 35,
                         columnNumber: 61
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/Product.jsx",
-                    lineNumber: 43,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/Product.jsx",
-            lineNumber: 28,
+            lineNumber: 18,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/Product.jsx",
-        lineNumber: 27,
+        lineNumber: 17,
         columnNumber: 5
     }, undefined);
 };
@@ -27599,19 +27591,27 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _s = $RefreshSig$();
-const EditProduct = (props)=>{
+const EditProduct = ({ _id , price , title , quantity , showEdit , toggleVisibility , onEdit  })=>{
     _s();
-    const [price, setPrice] = (0, _react.useState)(props.price);
-    const [title, setTitle] = (0, _react.useState)(props.title);
-    const [quantity, setQuantity] = (0, _react.useState)(props.quantity);
-    if (props.showEdit) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    const [inputPrice, setInputPrice] = (0, _react.useState)(price);
+    const [inputTitle, setInputTitle] = (0, _react.useState)(title);
+    const [inputQuantity, setInputQuantity] = (0, _react.useState)(quantity);
+    const handleUpdateProduct = ()=>{
+        onEdit(_id, {
+            price: inputPrice,
+            title: inputTitle,
+            quantity: inputQuantity
+        });
+        toggleVisibility();
+    };
+    if (showEdit) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "edit-form",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Edit Product"
             }, void 0, false, {
                 fileName: "src/components/EditProduct.jsx",
-                lineNumber: 11,
+                lineNumber: 16,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27624,41 +27624,14 @@ const EditProduct = (props)=>{
                                 children: "Product Name"
                             }, void 0, false, {
                                 fileName: "src/components/EditProduct.jsx",
-                                lineNumber: 14,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                type: "text",
-                                id: "product-name",
-                                value: title,
-                                onChange: (e)=>setTitle(e.target.value)
-                            }, void 0, false, {
-                                fileName: "src/components/EditProduct.jsx",
-                                lineNumber: 15,
-                                columnNumber: 13
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/EditProduct.jsx",
-                        lineNumber: 13,
-                        columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "input-group",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                htmlFor: "product-price",
-                                children: "Price"
-                            }, void 0, false, {
-                                fileName: "src/components/EditProduct.jsx",
                                 lineNumber: 19,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
-                                id: "product-price",
-                                value: price,
-                                onChange: (e)=>setPrice(e.target.value)
+                                id: "product-name",
+                                value: inputTitle,
+                                onChange: (e)=>setInputTitle(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/EditProduct.jsx",
                                 lineNumber: 20,
@@ -27674,8 +27647,8 @@ const EditProduct = (props)=>{
                         className: "input-group",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                htmlFor: "product-quantity",
-                                children: "Quantity"
+                                htmlFor: "product-price",
+                                children: "Price"
                             }, void 0, false, {
                                 fileName: "src/components/EditProduct.jsx",
                                 lineNumber: 24,
@@ -27683,9 +27656,9 @@ const EditProduct = (props)=>{
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 type: "text",
-                                id: "product-quantity",
-                                value: quantity,
-                                onChange: (e)=>setQuantity(e.target.value)
+                                id: "product-price",
+                                value: inputPrice,
+                                onChange: (e)=>setInputPrice(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/EditProduct.jsx",
                                 lineNumber: 25,
@@ -27698,45 +27671,73 @@ const EditProduct = (props)=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "actions form-actions",
+                        className: "input-group",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                className: "button",
-                                children: "Update"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                htmlFor: "product-quantity",
+                                children: "Quantity"
                             }, void 0, false, {
                                 fileName: "src/components/EditProduct.jsx",
-                                lineNumber: 33,
+                                lineNumber: 29,
                                 columnNumber: 13
                             }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                className: "button",
-                                onClick: props.toggleVisibility,
-                                children: "Cancel"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                id: "product-quantity",
+                                value: inputQuantity,
+                                onChange: (e)=>setInputQuantity(e.target.value)
                             }, void 0, false, {
                                 fileName: "src/components/EditProduct.jsx",
-                                lineNumber: 34,
+                                lineNumber: 30,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/EditProduct.jsx",
-                        lineNumber: 32,
+                        lineNumber: 28,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "actions form-actions",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                className: "button",
+                                onClick: handleUpdateProduct,
+                                children: "Update"
+                            }, void 0, false, {
+                                fileName: "src/components/EditProduct.jsx",
+                                lineNumber: 34,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                className: "button",
+                                onClick: toggleVisibility,
+                                children: "Cancel"
+                            }, void 0, false, {
+                                fileName: "src/components/EditProduct.jsx",
+                                lineNumber: 35,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/EditProduct.jsx",
+                        lineNumber: 33,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/EditProduct.jsx",
-                lineNumber: 12,
+                lineNumber: 17,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/EditProduct.jsx",
-        lineNumber: 10,
+        lineNumber: 15,
         columnNumber: 7
     }, undefined);
 };
-_s(EditProduct, "qh/gv2Lr0yS+AAzFNc0xc+BB7Kw=");
+_s(EditProduct, "WCqYxhCjkLyQ5q5zZ6O7HT9xdMg=");
 _c = EditProduct;
 exports.default = EditProduct;
 var _c;
@@ -27768,10 +27769,11 @@ const AddProduct = ({ onAdd  })=>{
     const [price, setPrice] = (0, _react.useState)("");
     const [title, setTitle] = (0, _react.useState)("");
     const [quantity, setQuantity] = (0, _react.useState)("");
-    const resetInputs = ()=>{
+    const resetForm = ()=>{
         setPrice("");
         setTitle("");
         setQuantity("");
+        setIsFormShown();
     };
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -27779,9 +27781,8 @@ const AddProduct = ({ onAdd  })=>{
             title,
             price,
             quantity
-        });
-        resetInputs();
-        setIsFormShown();
+        }, resetForm);
+    // resetInputs();
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27794,19 +27795,19 @@ const AddProduct = ({ onAdd  })=>{
                         children: "Add A Product"
                     }, void 0, false, {
                         fileName: "src/components/AddProduct.jsx",
-                        lineNumber: 29,
+                        lineNumber: 30,
                         columnNumber: 10
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/AddProduct.jsx",
-                    lineNumber: 29,
+                    lineNumber: 30,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: "Add Product"
                 }, void 0, false, {
                     fileName: "src/components/AddProduct.jsx",
-                    lineNumber: 30,
+                    lineNumber: 31,
                     columnNumber: 13
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27821,7 +27822,7 @@ const AddProduct = ({ onAdd  })=>{
                                     children: "Product Name"
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 34,
                                     columnNumber: 14
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27831,13 +27832,13 @@ const AddProduct = ({ onAdd  })=>{
                                     onChange: (e)=>setTitle(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 34,
+                                    lineNumber: 35,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/AddProduct.jsx",
-                            lineNumber: 32,
+                            lineNumber: 33,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27848,7 +27849,7 @@ const AddProduct = ({ onAdd  })=>{
                                     children: "Price"
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 37,
+                                    lineNumber: 38,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27858,13 +27859,13 @@ const AddProduct = ({ onAdd  })=>{
                                     onChange: (e)=>setPrice(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 38,
+                                    lineNumber: 39,
                                     columnNumber: 16
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/AddProduct.jsx",
-                            lineNumber: 36,
+                            lineNumber: 37,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27875,7 +27876,7 @@ const AddProduct = ({ onAdd  })=>{
                                     children: "Quantity"
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 42,
+                                    lineNumber: 43,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27885,13 +27886,13 @@ const AddProduct = ({ onAdd  })=>{
                                     onChange: (e)=>setQuantity(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 43,
+                                    lineNumber: 44,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/AddProduct.jsx",
-                            lineNumber: 41,
+                            lineNumber: 42,
                             columnNumber: 12
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27903,7 +27904,7 @@ const AddProduct = ({ onAdd  })=>{
                                     children: "Add"
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 47,
+                                    lineNumber: 48,
                                     columnNumber: 16
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27912,25 +27913,25 @@ const AddProduct = ({ onAdd  })=>{
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "src/components/AddProduct.jsx",
-                                    lineNumber: 48,
+                                    lineNumber: 49,
                                     columnNumber: 16
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/AddProduct.jsx",
-                            lineNumber: 46,
+                            lineNumber: 47,
                             columnNumber: 12
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/AddProduct.jsx",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 13
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/AddProduct.jsx",
-            lineNumber: 28,
+            lineNumber: 29,
             columnNumber: 5
         }, undefined)
     }, void 0, false);
