@@ -8,6 +8,7 @@ import axios from "axios";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
    
@@ -80,7 +81,11 @@ const App = () => {
 
   return (
     <div id="app">
-        <Header/>
+      <Header 
+      products={products} 
+      setCart={setCart}
+      cart={cart}
+      />
       <main>
       <div className="product-listing">
         <h2>Products</h2>
@@ -90,6 +95,9 @@ const App = () => {
           <Product {...product} 
           onDelete={handleDelete}
           onEdit={handleEdit}
+          cart={cart}
+          setCart={setCart}
+          currentProduct={product}
           />
           </li>
         )
