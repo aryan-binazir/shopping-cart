@@ -1,8 +1,26 @@
-const Product = ({ title, price, quantity, _id, onDelete }) => {
+import EditProduct from "./EditProduct";
+import { useState } from "react";
+
+const Product = ({ title, price, quantity, _id, onDelete, onEdit }) => {
+const [showEdit, setShowEdit] = useState(false);
 
   const handleDelete = (e) => {
     e.preventDefault();
     onDelete(_id);
+  }
+
+  // const handleClickEdit = (e) => {
+  //   e.preventDefault();
+  //   onEdit(_id);
+  // }
+
+  // const toggleEdit = (e) => {
+  //   setShowEdit(!showEdit);
+  // }
+
+  const toggleEditVisibility = (e) => {
+    e.preventDefault();
+    setShowEdit(!showEdit);
   }
 
   return (
@@ -13,7 +31,14 @@ const Product = ({ title, price, quantity, _id, onDelete }) => {
         <p className="quantity">{quantity} left in stock</p>
         <div className="actions product-actions">
           <a className="button add-to-cart">Add to Cart</a>
-          <a className="button edit">Edit</a>
+          <a className="button edit" onClick={toggleEditVisibility}>Edit</a>
+          <EditProduct 
+          title={title}
+          quantity={quantity}
+          price={price}
+          showEdit={showEdit}
+          toggleVisibility={toggleEditVisibility}
+          />
         </div>
         <a className="delete-button" onClick={handleDelete}><span>X</span></a>
       </div>

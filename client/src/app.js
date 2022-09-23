@@ -3,11 +3,8 @@ import Header from "./components/Header";
 import Product from "./components/Product";
 import AddProduct from "./components/AddProduct";
 import axios from "axios"; 
-import { getgroups } from "process";
-import { get } from "http";
 ;
 //import data from "../mockData/comments";
-
 
 
 
@@ -51,8 +48,20 @@ const App = () => {
       })
       .catch(error => {
         console.log(error);
-      });
-      
+      }); 
+  }
+
+  const handleEdit = (id) => {
+    // console.log("In edit", id)
+    // axios
+    //   .put(`api/products/${id}`)
+    //   .then(response => {
+    //     console.log(response);
+    //     getProducts();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   }); 
   }
 
   const handleAddProduct = (newProduct) => {
@@ -85,7 +94,10 @@ const App = () => {
         <ul>
         {products.map(product => 
           <li key={product._id}>
-          <Product {...product} onDelete={handleDelete}/>
+          <Product {...product} 
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+          />
           </li>
         )
         }
