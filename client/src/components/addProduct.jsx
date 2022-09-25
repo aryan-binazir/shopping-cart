@@ -10,17 +10,18 @@ const AddProduct = ({ onAdd }) => {
   const [title, setTitle] = useState("");
   const [quantity, setQuantity] = useState("");
 
-  const resetInputs = () => {
+  const resetForm = () => {
     setPrice("");
     setTitle("");
     setQuantity("");
+    setIsFormShown();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd({ title, price, quantity });
-    resetInputs();
-    setIsFormShown();
+    onAdd({ title, price, quantity }, resetForm);
+    // resetInputs();
+    
   }
   
 return (

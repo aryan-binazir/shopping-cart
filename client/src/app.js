@@ -3,64 +3,67 @@ import Header from "./components/Header";
 import Product from "./components/Product";
 import AddProduct from "./components/AddProduct";
 import axios from "axios"; 
-import { getgroups } from "process";
-import { get } from "http";
 ;
 //import data from "../mockData/comments";
 
-
-
-
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
    
     axios
         .get('/api/products')
         .then(response => {
-          console.log("I'me here")
-          if (response.data){          
-            setProducts(response.data)
-            
+          if (response.data) {          
+            setProducts(response.data); 
           }
-
         })
   }, [])
 
-  const getProducts = () => {
+  const handleDelete = (pId) => {
     axios
-    .get('/api/products')
-    .then(response => {
-      console.log("I'me here")
-      if (response.data){          
-        setProducts(response.data)
-        
-      }
-
-    })
-  }
-
-  const handleDelete = (id) => {
-    console.log("In delte", id)
-    axios
-      .delete(`api/products/${id}`)
+      .delete(`api/products/${pId}`)
       .then(response => {
-        console.log(response);
-        getProducts();
+        setProducts(products.filter(product => product._id != pId));
       })
       .catch(error => {
         console.log(error);
-      });
-      
+      }); 
   }
 
-  const handleAddProduct = (newProduct) => {
+  const handleEdit = (_id, editedProduct) => {
+    console.log(_id, editedProduct);
+
+    axios
+      .put(`api/products/${_id}`, editedProduct)
+      .then(response => {
+        console.log("response", response);
+        setProducts(getEditedList(_id, editedProduct))
+      })
+      .catch(error => {
+        console.log(error);
+      }); 
+  }
+
+  const getEditedList = (_id, editedProduct) => {
+    return products.map(product => {
+      if (product._id === _id) {
+        return { ...product, ...editedProduct }
+      } else {
+        return product;
+      }
+    });
+  }
+
+
+  const handleAddProduct = (newProduct, callback) => {
     axios
       .post('/api/products', newProduct)
       .then(response => {
-          console.log(response);
-          getProducts();
+          console.log(response.data);
+          setProducts(products.concat(response.data));
+          if (callback) callback();
         })
         .catch(error => {
           console.log(error);
@@ -78,14 +81,24 @@ const App = () => {
 
   return (
     <div id="app">
-        <Header/>
+      <Header 
+      products={products} 
+      setCart={setCart}
+      cart={cart}
+      />
       <main>
       <div className="product-listing">
         <h2>Products</h2>
         <ul>
         {products.map(product => 
           <li key={product._id}>
-          <Product {...product} onDelete={handleDelete}/>
+          <Product {...product} 
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+          cart={cart}
+          setCart={setCart}
+          currentProduct={product}
+          />
           </li>
         )
         }
