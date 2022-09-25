@@ -98,6 +98,8 @@ const App = () => {
           cart={cart}
           setCart={setCart}
           currentProduct={product}
+          setProducts={setProducts}
+          products={products}
           />
           </li>
         )
