@@ -2905,7 +2905,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-var _appJs = require("./app.js");
+var _appJs = require("./App.js");
 var _appJsDefault = parcelHelpers.interopDefault(_appJs);
 const root = document.getElementById("root");
 (0, _clientDefault.default).createRoot(root).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appJsDefault.default), {}, void 0, false, {
@@ -2919,7 +2919,7 @@ const root = document.getElementById("root");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./app.js":"bNKaB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./App.js":"2kQhy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("./cjs/react-jsx-dev-runtime.development.js");
 
@@ -27072,11 +27072,11 @@ module.exports = require("./cjs/scheduler.development.js");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"bNKaB":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$f79a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{}],"2kQhy":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f00f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f79a.prelude(module);
+$parcel$ReactRefreshHelpers$f00f.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -27152,7 +27152,7 @@ const App = ()=>{
                 setCart: setCart,
                 cart: cart
             }, void 0, false, {
-                fileName: "src/app.js",
+                fileName: "src/App.js",
                 lineNumber: 84,
                 columnNumber: 7
             }, undefined),
@@ -27163,7 +27163,7 @@ const App = ()=>{
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                             children: "Products"
                         }, void 0, false, {
-                            fileName: "src/app.js",
+                            fileName: "src/App.js",
                             lineNumber: 91,
                             columnNumber: 9
                         }, undefined),
@@ -27179,41 +27179,41 @@ const App = ()=>{
                                         setProducts: setProducts,
                                         products: products
                                     }, void 0, false, {
-                                        fileName: "src/app.js",
+                                        fileName: "src/App.js",
                                         lineNumber: 95,
                                         columnNumber: 11
                                     }, undefined)
                                 }, product._id, false, {
-                                    fileName: "src/app.js",
+                                    fileName: "src/App.js",
                                     lineNumber: 94,
                                     columnNumber: 11
                                 }, undefined))
                         }, void 0, false, {
-                            fileName: "src/app.js",
+                            fileName: "src/App.js",
                             lineNumber: 92,
                             columnNumber: 9
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _addProductDefault.default), {
                             onAdd: handleAddProduct
                         }, void 0, false, {
-                            fileName: "src/app.js",
+                            fileName: "src/App.js",
                             lineNumber: 108,
                             columnNumber: 9
                         }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/app.js",
+                    fileName: "src/App.js",
                     lineNumber: 90,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
-                fileName: "src/app.js",
+                fileName: "src/App.js",
                 lineNumber: 89,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/app.js",
+        fileName: "src/App.js",
         lineNumber: 83,
         columnNumber: 5
     }, undefined);
@@ -27224,16 +27224,16 @@ exports.default = App;
 var _c;
 $RefreshReg$(_c, "App");
 
-  $parcel$ReactRefreshHelpers$f79a.postlude(module);
+  $parcel$ReactRefreshHelpers$f00f.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Header":"8Tlgw","./components/Product":"bqVUg","./components/AddProduct":"gawXM","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8Tlgw":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9742 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/Header":"knC38","./components/Product":"ke9yL","./components/AddProduct":"iZy1l","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"knC38":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e807 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9742.prelude(module);
+$parcel$ReactRefreshHelpers$e807.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -27247,7 +27247,7 @@ const Header = ({ cart , setCart , products  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                 children: "The Shop!"
             }, void 0, false, {
-                fileName: "src/components/header.jsx",
+                fileName: "src/components/Header.jsx",
                 lineNumber: 6,
                 columnNumber: 5
             }, undefined),
@@ -27256,13 +27256,13 @@ const Header = ({ cart , setCart , products  })=>{
                 cart: cart,
                 setCart: setCart
             }, void 0, false, {
-                fileName: "src/components/header.jsx",
+                fileName: "src/components/Header.jsx",
                 lineNumber: 7,
                 columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/components/header.jsx",
+        fileName: "src/components/Header.jsx",
         lineNumber: 5,
         columnNumber: 5
     }, undefined);
@@ -27272,7 +27272,7 @@ exports.default = Header;
 var _c;
 $RefreshReg$(_c, "Header");
 
-  $parcel$ReactRefreshHelpers$9742.postlude(module);
+  $parcel$ReactRefreshHelpers$e807.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
@@ -27564,11 +27564,11 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"bqVUg":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$6950 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react-refresh/runtime":"786KC"}],"ke9yL":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$704e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$6950.prelude(module);
+$parcel$ReactRefreshHelpers$704e.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -27640,7 +27640,7 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: title
                 }, void 0, false, {
-                    fileName: "src/components/product.jsx",
+                    fileName: "src/components/Product.jsx",
                     lineNumber: 50,
                     columnNumber: 9
                 }, undefined),
@@ -27651,7 +27651,7 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                         price
                     ]
                 }, void 0, true, {
-                    fileName: "src/components/product.jsx",
+                    fileName: "src/components/Product.jsx",
                     lineNumber: 51,
                     columnNumber: 9
                 }, undefined),
@@ -27662,7 +27662,7 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                         " left in stock"
                     ]
                 }, void 0, true, {
-                    fileName: "src/components/product.jsx",
+                    fileName: "src/components/Product.jsx",
                     lineNumber: 52,
                     columnNumber: 9
                 }, undefined),
@@ -27674,7 +27674,7 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                             onClick: addToCart,
                             children: "Add to Cart"
                         }, void 0, false, {
-                            fileName: "src/components/product.jsx",
+                            fileName: "src/components/Product.jsx",
                             lineNumber: 54,
                             columnNumber: 11
                         }, undefined),
@@ -27683,7 +27683,7 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                             onClick: toggleEditVisibility,
                             children: "Edit"
                         }, void 0, false, {
-                            fileName: "src/components/product.jsx",
+                            fileName: "src/components/Product.jsx",
                             lineNumber: 55,
                             columnNumber: 11
                         }, undefined),
@@ -27696,13 +27696,13 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                             onEdit: onEdit,
                             _id: _id
                         }, void 0, false, {
-                            fileName: "src/components/product.jsx",
+                            fileName: "src/components/Product.jsx",
                             lineNumber: 56,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/components/product.jsx",
+                    fileName: "src/components/Product.jsx",
                     lineNumber: 53,
                     columnNumber: 9
                 }, undefined),
@@ -27712,23 +27712,23 @@ const Product = ({ currentProduct , title , price , quantity , _id , onDelete , 
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: "X"
                     }, void 0, false, {
-                        fileName: "src/components/product.jsx",
+                        fileName: "src/components/Product.jsx",
                         lineNumber: 66,
                         columnNumber: 61
                     }, undefined)
                 }, void 0, false, {
-                    fileName: "src/components/product.jsx",
+                    fileName: "src/components/Product.jsx",
                     lineNumber: 66,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/components/product.jsx",
+            fileName: "src/components/Product.jsx",
             lineNumber: 49,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
-        fileName: "src/components/product.jsx",
+        fileName: "src/components/Product.jsx",
         lineNumber: 48,
         columnNumber: 5
     }, undefined);
@@ -27739,7 +27739,7 @@ exports.default = Product;
 var _c;
 $RefreshReg$(_c, "Product");
 
-  $parcel$ReactRefreshHelpers$6950.postlude(module);
+  $parcel$ReactRefreshHelpers$704e.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
@@ -27913,11 +27913,11 @@ $RefreshReg$(_c, "EditProduct");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gawXM":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$fec5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iZy1l":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f958 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$fec5.prelude(module);
+$parcel$ReactRefreshHelpers$f958.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -27959,19 +27959,19 @@ const AddProduct = ({ onAdd  })=>{
                         onClick: handleToggle,
                         children: "Add A Product"
                     }, void 0, false, {
-                        fileName: "src/components/addProduct.jsx",
+                        fileName: "src/components/AddProduct.jsx",
                         lineNumber: 30,
                         columnNumber: 10
                     }, undefined)
                 }, void 0, false, {
-                    fileName: "src/components/addProduct.jsx",
+                    fileName: "src/components/AddProduct.jsx",
                     lineNumber: 30,
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: "Add Product"
                 }, void 0, false, {
-                    fileName: "src/components/addProduct.jsx",
+                    fileName: "src/components/AddProduct.jsx",
                     lineNumber: 31,
                     columnNumber: 13
                 }, undefined),
@@ -27986,7 +27986,7 @@ const AddProduct = ({ onAdd  })=>{
                                     label: "product-name",
                                     children: "Product Name"
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 34,
                                     columnNumber: 14
                                 }, undefined),
@@ -27996,13 +27996,13 @@ const AddProduct = ({ onAdd  })=>{
                                     value: title,
                                     onChange: (e)=>setTitle(e.target.value)
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 35,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/components/addProduct.jsx",
+                            fileName: "src/components/AddProduct.jsx",
                             lineNumber: 33,
                             columnNumber: 13
                         }, undefined),
@@ -28013,7 +28013,7 @@ const AddProduct = ({ onAdd  })=>{
                                     label: "product-price",
                                     children: "Price"
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 38,
                                     columnNumber: 15
                                 }, undefined),
@@ -28023,13 +28023,13 @@ const AddProduct = ({ onAdd  })=>{
                                     value: price,
                                     onChange: (e)=>setPrice(e.target.value)
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 39,
                                     columnNumber: 16
                                 }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/components/addProduct.jsx",
+                            fileName: "src/components/AddProduct.jsx",
                             lineNumber: 37,
                             columnNumber: 13
                         }, undefined),
@@ -28040,7 +28040,7 @@ const AddProduct = ({ onAdd  })=>{
                                     label: "product-quantity",
                                     children: "Quantity"
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 43,
                                     columnNumber: 15
                                 }, undefined),
@@ -28050,13 +28050,13 @@ const AddProduct = ({ onAdd  })=>{
                                     value: quantity,
                                     onChange: (e)=>setQuantity(e.target.value)
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 44,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/components/addProduct.jsx",
+                            fileName: "src/components/AddProduct.jsx",
                             lineNumber: 42,
                             columnNumber: 12
                         }, undefined),
@@ -28068,7 +28068,7 @@ const AddProduct = ({ onAdd  })=>{
                                     onClick: handleSubmit,
                                     children: "Add"
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 48,
                                     columnNumber: 16
                                 }, undefined),
@@ -28077,25 +28077,25 @@ const AddProduct = ({ onAdd  })=>{
                                     onClick: handleToggle,
                                     children: "Cancel"
                                 }, void 0, false, {
-                                    fileName: "src/components/addProduct.jsx",
+                                    fileName: "src/components/AddProduct.jsx",
                                     lineNumber: 49,
                                     columnNumber: 16
                                 }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/components/addProduct.jsx",
+                            fileName: "src/components/AddProduct.jsx",
                             lineNumber: 47,
                             columnNumber: 12
                         }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/components/addProduct.jsx",
+                    fileName: "src/components/AddProduct.jsx",
                     lineNumber: 32,
                     columnNumber: 13
                 }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/components/addProduct.jsx",
+            fileName: "src/components/AddProduct.jsx",
             lineNumber: 29,
             columnNumber: 5
         }, undefined)
@@ -28107,7 +28107,7 @@ exports.default = AddProduct;
 var _c;
 $RefreshReg$(_c, "AddProduct");
 
-  $parcel$ReactRefreshHelpers$fec5.postlude(module);
+  $parcel$ReactRefreshHelpers$f958.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;

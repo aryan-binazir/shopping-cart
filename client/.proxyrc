@@ -1,5 +1,5 @@
 {
   "/api": {
-    "target": "http://server_c:5001/"
+    "target": "http://server:5001/"
   }
 }
