@@ -20,8 +20,6 @@ const AddProduct = ({ onAdd }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd({ title, price, quantity }, resetForm);
-    // resetInputs();
-    
   }
   
 return (
@@ -31,16 +29,16 @@ return (
             <h3>Add Product</h3>
             <form action="" onSubmit={handleSubmit}>
             <div className="input-group">
-             <label label="product-name">Product Name</label>
+             <label htmlFor="product-name" label="product-name">Product Name</label>
               <input type="text" id="product-name" value={title} onChange={(e) => setTitle(e.target.value)}/>
             </div>
             <div className="input-group">
-              <label label="product-price">Price</label>
+              <label htmlFor="product-price" label="product-price">Price</label>
                <input type="text" id="product-price" value={price} onChange={(e) => setPrice(e.target.value)}/>
              </div>
 
            <div className="input-group">
-              <label label="product-quantity">Quantity</label>
+              <label htmlFor="product-quantity" label="product-quantity">Quantity</label>
               <input type="text" id="product-quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
             </div>
 

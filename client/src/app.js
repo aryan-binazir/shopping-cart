@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import Product from "./components/Product";
-import AddProduct from "./components/AddProduct";
+import Header from "./components/Header.jsx";
+import Product from "./components/Product.jsx";
+import AddProduct from "./components/AddProduct.jsx";
 import axios from "axios"; 
 ;
 //import data from "../mockData/comments";
@@ -25,6 +25,7 @@ const App = () => {
     axios
       .delete(`api/products/${pId}`)
       .then(response => {
+        console.log(response);
         setProducts(products.filter(product => product._id != pId));
       })
       .catch(error => {
