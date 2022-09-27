@@ -43,7 +43,7 @@ return (
             </div>
 
            <div className="actions form-actions">
-               <a className="button" onClick={handleSubmit}>Add</a>
+               <a href="/#" className="button" onClick={handleSubmit}>Add</a>
                <a className="button" onClick={handleToggle}>Cancel</a>
            </div>
            </form>
